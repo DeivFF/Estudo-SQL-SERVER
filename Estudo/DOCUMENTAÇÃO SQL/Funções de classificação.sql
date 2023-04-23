@@ -1,4 +1,4 @@
--- FUN«’ES DE CLASSIFICA«√O
+-- FUN√á√ïES DE CLASSIFICA√á√ÉO
 
 
 -- ROW NUMBER
@@ -6,7 +6,7 @@ SELECT Nome,AVG(produtividade),Equipe,ROW_NUMBER() OVER(partition by equipe ORDE
 INNER JOIN colaboradores as C ON I.id_colaborador = C.ID
 GROUP BY c.nome,equipe
 
-/* FÛrmula respons·vel por calcular o rank de cada colaborar em relaÁ„o a mÈdia total e particionado por equipe, ou seja, quando a equipe mudar, o rank reinicia*/
+/* F√≥rmula respons√°vel por calcular o rank de cada colaborar em rela√ß√£o a m√©dia total e particionado por equipe, ou seja, quando a equipe mudar, o rank reinicia*/
 
 -- DENSE RANK
 SELECT Nome,AVG(produtividade),Equipe,DENSE_RANK() OVER(partition by equipe ORDER BY AVG(produtividade) desc) as RANK FROM indicadores as I
@@ -28,18 +28,17 @@ GROUP BY c.nome,equipe
 
 /* 
 
-ObserÁıes:
+Observa√ß√µes:
 
-As trÍs funÁıes agem de modo semelhantes, vamos as diferenÁas:
+As tr√™s fun√ß√µes agem de modo semelhante. Vamos √†s diferen√ßas:
 
-A funÁ„o RANK È respons·vel por rankear determinada coluna, nos casos em que da empate ela repete a mesma posiÁ„o e logo apÛs
-isto continua o rank pulando a quantidade de repetiÁ„o que houve. Por exemplo: Supondo que haja um empate na posiÁ„o 3 e essa posiÁ„o se repita 4 vezes, o prÛximo rank n„o ser· 4 mas sim 7.
+A fun√ß√£o RANK √© respons√°vel por ranquear determinada coluna. Nos casos em que h√° empate, ela repete a mesma posi√ß√£o e, logo ap√≥s isso, continua o rank pulando a quantidade de repeti√ß√µes que houve. Por exemplo: supondo que haja um empate na posi√ß√£o 3 e essa posi√ß√£o se repita 4 vezes, o pr√≥ximo rank n√£o ser√° 4, mas sim 7.
 
-A funÁ„o DENSE_RANK age de modo semelhante a funÁ„o RANK a diferenÁa È que ela n„o pula posiÁıes mesmo que determinada posiÁ„o se repita.
+A fun√ß√£o DENSE_RANK age de modo semelhante √† fun√ß√£o RANK, a diferen√ßa √© que ela n√£o pula posi√ß√µes, mesmo que determinada posi√ß√£o se repita.
 
-A funÁ„o ROW_NUMBER rankeia a posiÁ„o sem repetir nenhum valor mesmo que haja empate, tambÈm n„o pula nenhum valor, todas as posiÁıes s„o ˙nicas.
+A fun√ß√£o ROW_NUMBER ranqueia a posi√ß√£o sem repetir nenhum valor, mesmo que haja empate. Al√©m disso, n√£o pula nenhum valor e todas as posi√ß√µes s√£o √∫nicas.
 
-A funÁ„o NTILE È respons·vel por criar determinada quantidade de grupos, a quantidade a ser formada È passada como par‚metro na prÛpria funÁ„o, 
+A fun√ß√£o NTILE √© respons√°vel por criar determinada quantidade de grupos, a quantidade a ser formada √© passada como par√¢metro na pr√≥pria fun√ß√£o., 
 
 */
 
